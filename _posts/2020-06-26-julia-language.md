@@ -11,7 +11,10 @@ I have to disclose that I'm a long time user of Fortran, C++ and C due to the na
 
 ## Setting up
 
-My development desktop is Ubuntu 18, so I have to download and install Julia (v1.4) as there is no precompiled binaries. Not a big deal, I didn't miss `sudo apt-get install julia` (notice I still use `apt-get`). Still I installed julia under `/opt/julia/1.4/` and set up a soft-link in `/usr/bin/julia`. 
+My development desktop is Ubuntu 18, so I have to download and install Julia (v1.4) as there is no precompiled binaries. Not a big deal, I didn't miss `sudo apt-get install julia` (notice I still use `apt-get`). Still I installed julia under `/opt/julia/1.4/` and set up a symbolic link in `/usr/bin/julia` to `/opt/julia/1.4/bin/julia`. 
+
+
+Work in progress...
 
 
 
