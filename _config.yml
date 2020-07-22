@@ -1,1 +1,11 @@
-theme: jekyll-theme-slate
+theme: jekyll-theme-leap-day
+
+title: "williamfgc's Notes"
+description: Some notes about software, hardware technologies and personal interests
+show_downloads: "true"
+
+tagline: Site Tagline
+author:
+  name: William F Godoy
+  email: godoywf@ornl.gov
+  github: williamfgc
