@@ -6,13 +6,13 @@ author: William F Godoy
 
 #  {{ page.title }}
 
-> **_Reading time:_** 11 minutes.
+> **_Reading time:_** 9 minutes.
 
 It's been a few times that I heard about the Julia language in the past. Labeled as a programming language for "data science" and "scientific computing". I felt intrigued and decided to use it for one of my projects at work considering that it's been nearly 2 years since [Julia reached a stable 1.0 version](https://julialang.org/blog/2018/08/one-point-zero/). I hope sharing my experience will help other people interested in the language for their applications.
 
 ## My background and why I should mention it.
 
-I'm a long time user of Fortran, C++, C, and I have used Python, R, Matlab, and Java in the past, mostly for scientific computing projects. I'm far from being an expert in any language and I just try to keep up with project needs.
+I'm a long time user of Fortran, C++, C, and I have used Python, R, Matlab, and Java in the past, mostly for scientific computing projects. I'm far from being an expert in any language and I just try to keep up with project needs. These days I'm mostly using C++ and Python.
 
 This is important to point out because people with different backgrounds may have completely different opinions or I could just be dead wrong. It could also help the reader come up with its own mental mapping to some the features Julia "borrow" from other languages as I describe in [this section](#Julia-syntax-and-other-languages).
  
@@ -30,11 +30,11 @@ I was ready to jump as I had a project that I started drafting with Python, but 
 
 - **License**: Julia has a MIT license which is a free and permissive license, which I see as a strong point. Most of my projects use either Apache, BSD or MIT permissive licenses.
 
-- **Learning resources**: there are plenty of tutorials, examples, posts, podcasts. I settled with [From zero to Julia!](https://techytok.com/from-zero-to-julia/) for a quick tutorial as it breaks down each aspect of the language with examples very nicely. For the most part, if you're coming from Python the syntax is very easy to pick up (Fortran, R or Matlab help for the 1-index and column-major syntax). I listened to some [podcasts](https://juliacomputing.com/media/podcasts.html) trying to understand the creators' philosophy and design decisions. For online resources, I'd come frequently to the [official docs](https://docs.julialang.org/en/v1/) and I subscribed to [https://discourse.julialang.org/](https://discourse.julialang.org/), which is very active. 
+- **Learning resources**: there are plenty of tutorials, examples, posts, podcasts. I settled with [From zero to Julia!](https://techytok.com/from-zero-to-julia/) for a quick tutorial as it breaks down each aspect of the language with examples very nicely. For the most part, if you're coming from Python (and numpy) the syntax is very easy to pick up (Fortran, R or Matlab help for the 1-index and column-major syntax). I listened to some [podcasts](https://juliacomputing.com/media/podcasts.html) trying to understand the creators' philosophy and design decisions. For online resources, I'd come frequently to the [official docs](https://docs.julialang.org/en/v1/) and I subscribed to [https://discourse.julialang.org/](https://discourse.julialang.org/), which is very active and helpful. 
 
 - **Integrated Development Environment (IDE)**: I use the [Eclipse CDT IDE](https://www.eclipse.org/cdt/) on a regular basis as I work in multiple language projects which are covered with Eclipse's rich ecosystem of plugins (photran, pydev, CDT). To my surprise the [JuliaDT plug-in](https://github.com/JuliaComputing/JuliaDT) has not been touched since 2016. Instead all efforts have been put in the [Juno IDE](https://junolab.org/). I continued using JuliaDT, not without a minor installation [issue](https://github.com/JuliaComputing/JuliaDT/issues/38) my colleague helped me solve. They are also not responsive in the issue tracker. JuliaDT hasn't been updated with the latest language syntax and it's essentially an incomplete editor, not a proper IDE with all the bells and whistles. As Julia grows I hope for renewed community activity in JuliaDT.
 
-- **Installing packages**: this is one of the really strong points of Julia. Similarly to [R Cran](https://cran.r-project.org/) and [Rust's Cargo](https://doc.rust-lang.org/cargo/), packaging is part of the standard language ecosystem through the [`Pkg` builtin package manager](https://docs.julialang.org/en/v1/stdlib/Pkg/index.html). I can think of the many times I encountered problems mixing different Python package managers: pip, conda, synaptic; and versions for numpy, scipy and others. Not to mention dependency hell with Fortran, C and C++. Having a unified approach really helps for well-established stable libraries. Projects in Julia have a [`Project.toml` file](https://julialang.github.io/Pkg.jl/v1/toml-files/) which I see as a project manifest meaning that configuration and dependencies are also addressed by the language.
+- **Installing packages**: this is one of the really strong points of Julia. Similar to [R Cran](https://cran.r-project.org/) and [Rust's Cargo](https://doc.rust-lang.org/cargo/), packaging is part of the standard language ecosystem through the [`Pkg` builtin package manager](https://docs.julialang.org/en/v1/stdlib/Pkg/index.html). I can think of the many times I encountered problems mixing different Python package managers: pip, conda, synaptic; and versions for numpy, scipy and others; not to mention dependency hell with Fortran, C and C++. Having a unified approach really helps for well-established stable libraries. Projects in Julia have a [`Project.toml` file](https://julialang.github.io/Pkg.jl/v1/toml-files/) which I see as a project manifest meaning that configuration and dependencies are also addressed by the language.
 
 - **Testing**: another strong point. Testing, in particular unit testing, is [built into the language](https://docs.julialang.org/en/v1/stdlib/Test/). I found it similar to `pytest` in the sense that your unit tests are detected under a `test` directory from your project base directory, but there are slight differences. Julia projects require a `test/runtests.jl` file which is executed from your base directory as: 
   
@@ -43,9 +43,9 @@ I was ready to jump as I had a project that I started drafting with Python, but 
   $ julia --project=. test/runtests.jl
   ```
   
-  `test/runtests.jl` is a single point of entry to include other test files as required for your project. Test commands are `@` macro -based, I ended up using `@testset` for a family of tests and `@test` for each assertion. `--project=.` is required as I was working on a module and this argument allows Julia to look for your module under the `src` directory by default.
+  `test/runtests.jl` is a single point of entry to include other test files as required for your project. Test commands are `@` macro-based, I ended up using `@testset` for a family of tests and `@test` for each assertion. `--project=.` is required as I was working on a module and this argument allows Julia to look for your module under the `src` directory by default.
 
-  My tests were very simple so I didn't dig further. My `test/runtests.jl` file looked like this:
+  My tests were very simple, so I didn't dig further on Julia's testing capabilities. My `test/runtests.jl` file looked like this:
   
   ```julia
   using Test, Base.Filesystem
@@ -70,7 +70,7 @@ I was ready to jump as I had a project that I started drafting with Python, but 
 
 In this section I try to draw parallels with other languages. Take it with a grain of salt, this is just my own mental map.
 
-- **"Statically" typed as HPC languages**: this is one of the reasons I find Julia compelling for scientific computing. Performance, Julia's stronghold, requires to know as much as you can about your application in terms of memory alignment of underlying types. Also, reading large scientific code bases without types makes it a bit difficult to follow (think Fortran without `implicit none`). It's common for scientific code to be written once by a one or a few individuals and read many times by a group of people, thus typing enhance group communication. I prefer a good balance between defining types and no type information at all. For example, in C++ I try to use, but not abuse, the `auto` keyword. Even Python is allowing some sort of [typing since v3.5](https://docs.python.org/3/library/typing.html). It's great that some form of "static" typing baked into the Julia language to be able to do checks the first time a program runs and for code readability. 
+- **"Statically" typed as high performance computing (HPC) languages**: this is one of the reasons I find Julia compelling for scientific computing, just like any HPC language: Fortran, C, C++. Performance, Julia's stronghold, requires to know as much as you can about your application in terms of memory alignment of underlying types. Also, reading large scientific code bases without types makes it a bit difficult to follow (think of Fortran code without `implicit none`). It's common for scientific code to be written once by a one or a few individuals and read many times by a group of people, thus typing enhance group communication. I prefer a good balance between defining types and no type information at all. For example, in C++ I try to use, but not abuse, the `auto` keyword. Even Python is allowing some sort of [typing since v3.5](https://docs.python.org/3/library/typing.html). It's great that some form of "static" typing baked into the Julia language to be able to do checks the first time a program runs and for code readability. 
 
   For example, I had to write a helper function that reuses the Julia's [Filesystem `walkdir`](https://docs.julialang.org/en/v1/base/file/#Base.Filesystem.walkdir). 
 
@@ -98,7 +98,7 @@ In this section I try to draw parallels with other languages. Take it with a gra
   end
   ```
 
-- **Fortran for numbers, Python for other things**: Julia follows the Fortran column-major, 1-index syntax for multidimensional arrays, in the same line of R and Matlab. I think it makes sense since much of the underlying numerical software originated in Fortran and these languages were designed with arrays as first-class citizens. Julia doesn't change this (which is a good thing). On the other hand, Julia feels close to high-level functionality in Python or C++ for things like data structures: [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries-1), [exception handling](https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling-1). For example, looping through the keys of a dictionary looks like this:
+- **Fortran for numbers, Python for other things**: Julia follows the Fortran column-major, 1-index syntax for multidimensional arrays, in the same line of R and Matlab. I think it makes sense since much of the underlying numerical software originated in Fortran and these languages were designed with arrays as first-class citizens. Julia doesn't change this (which is a good thing), but I must admit I got carried away and introduced bugs a couple fo times because of this. On the other hand, Julia feels close to high-level functionality in Python or C++ for things like data structures: [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries-1), [exception handling](https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling-1). For example, looping through the keys of a dictionary looks like this:
 
   ```julia
   for key in keys(extractor.outputs)
@@ -135,7 +135,7 @@ In this section I try to draw parallels with other languages. Take it with a gra
 - **structs as in C**: Julia [structs or composite types](https://docs.julialang.org/en/v1/manual/types/#Composite-Types-1) are similar to C structs, or Fortran derived types pre-object-oriented Fortran. They can only contain data, not functions. This is part of Julia's philosophy, each struct must be a concrete container of data, abstract structs on the other hand can't contain data. Also, structs are immutable by default, [similar to Rust approach for variables](https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html), you need to declare it using the [`mutable struct` keyword](https://docs.julialang.org/en/v1/manual/types/#Mutable-Composite-Types-1). You can implement constructors for initialization which I prefer as it aligns with [C++ RAII principle](https://isocpp.org/blog/2018/02/to-raii-or-not-to-raii-jonathan-boccara).
 
 
-- **Abstract Inheritance: Behavior not Data, and Composition**: Julia is not exactly "object-oriented" as Python, Java, or C++. Inheritance is limited to functions on abstract types (which have no members), while composition, "has-a", is favored over member inheritance "is-a". There is a [github issue](https://github.com/JuliaLang/julia/issues/4935) for the reasoning behind these decisions on not supporting abstract types with fields. It essentially leads to a more complex model (like Python or C++) that the Julia designers don't want to enforce or maintain. I personally find silly when I hear that composition "is better" than inheritance. These are just tools to express the relationship between your objects and using the two appropriately can lead to a powerful design. Each one scales differently, but I agree that inheritance can be easily abused since developers overlook the "is-a" aspect. In any case, Julia model is simple, but implies that you must let go field inheritance. Treat each struct as a container of data and expect a lot of replication or third-party macro usage to "mimic" field inheritance.
+- **Abstract Inheritance: Behavior not Data, and Composition**: Julia is not exactly "object-oriented" as Python, Java, or C++. Inheritance is limited to functions or "behavior" on abstract types (which have no members), while composition, "has-a", is favored over member inheritance "is-a". There is a [github issue](https://github.com/JuliaLang/julia/issues/4935) for the reasoning behind these decisions on not supporting abstract types with fields. It essentially leads to a more complex model (like Python or C++) that the Julia designers don't want to enforce or maintain. I personally find silly when I hear that composition "is better" than inheritance. These are just tools to express the relationship between your objects and using the two appropriately can lead to a powerful design. Each one scales differently, but I agree that inheritance can be easily abused since developers overlook the "is-a" aspect. In any case, Julia model is simple, but implies that you must let go field inheritance. Treat each struct as a container of data and expect a lot of replication or third-party macro usage to "mimic" field inheritance in your architecture.
 
 - **Multiple dispatch as in Fortran, C++**: abstract structs serve the purpose of providing a template for functionality of the derived structs. This leads to multiple dispatch or duck typing, essentially similar to function overloads and template traits in C++. I like the fact that Julia docs provide a section on the [dangers of abusing multiple dispatch]("https://docs.julialang.org/en/v1/manual/performance-tips/#The-dangers-of-abusing-multiple-dispatch-(aka,-more-on-types-with-values-as-parameters)-1") which I highly recommend before applying multiple dispatch everywhere in your program.
 
@@ -144,18 +144,18 @@ In this section I try to draw parallels with other languages. Take it with a gra
 
 Overall, the package stack was kept simple and beyond the Julia Base I only used a few packages to solve a linear fitting model, plotting and file pattern search. They are listed here:
 
-- [DataFrames.jl](https://juliadata.github.io/DataFrames.jl/stable/)
+- [DataFrames.jl](https://juliadata.github.io/DataFrames.jl/stable/) Similar to R's Data Frame
 
-- [Plots.jl](http://docs.juliaplots.org/latest/)
+- [Plots.jl](http://docs.juliaplots.org/latest/) Only used for simple stuff, gets the job done
 
-- [GLM.jl](https://juliastats.org/GLM.jl/latest/) Generalized linear model
+- [GLM.jl](https://juliastats.org/GLM.jl/latest/) Generalized linear model, requires DataFrames
 
 - [Glob.jl](https://github.com/vtjnash/Glob.jl) File pattern search
 
 
 ## Julia Performance
 
-Performance is presented as Julia's big selling point as it solves the "two-language problem". Personally, the "two-language problem" wasn't my biggest problem or concern. Julia itself can be seen as a nice front-end to LLVM which is written in C++, and usually Python underlying libraries (written in C, C++ or Fortran) are rich enough for common tasks with numerical structures. I'd expect Julia or Python libraries would be calling BLAS or LAPACK somewhere under the hood. However, I can see the value in many areas in which **CPU runtime** could be important as you just write code in "one language" to maintain a single codebase.
+Performance is presented as Julia's big selling point as it solves the "two-language problem". Personally, the "two-language problem" wasn't my biggest concern. Julia itself can be seen as a nice front-end to LLVM or GCC which are written in C++, and usually Python underlying libraries (written in C, C++ or Fortran) are rich enough for common tasks with numerical structures. For example, I'd expect Julia or Python libraries would be calling BLAS or LAPACK somewhere under the hood. However, I can see the value in many areas in which **CPU runtime** could be important as you just write code in "one language" to maintain a single codebase.
 
 - **Just-in-time (JIT) and start-up times**: I have to be honest, at first it was a bit dissapointing to experience slow startup times for common packages, in particular [Plots](http://docs.juliaplots.org/latest/) with honorable mentions to [DataFrames](https://juliadata.github.io/DataFrames.jl/stable/) and [GLM](https://juliastats.org/GLM.jl/latest/). In any case, I found the best workaround is to pre-compiled your stack into a shared-library. To do this in the REPL:
 
@@ -172,16 +172,17 @@ Performance is presented as Julia's big selling point as it solves the "two-lang
 - **Parallel and GPU support**: this is another strong point. [Multithreading is part of the language](https://docs.julialang.org/en/v1/base/multi-threading/), and great efforts with [JuliaGPU](https://github.com/JuliaGPU) for, well you guess, GPU computing. Granted many of these efforts are experimental, they are constantly evolving to become more stable. I didn't use these for my project, but it's nice to know they are being actively developed.
 
 
-## Final Thoughts and Wishlist
+## Wishlist and Final Thoughts
 
-Overall, I like what Julia offers for scientific computing. It's well designed and easy to grasp if you're coming from a numerical background (Fortran, Matlab, R). I find comparisons with Python a bit unfair, since Python is a well-established general-purpose dynamic language with a rich ecosystem which has numerical capabilities later added into the language. Would I migrate Python production code to Julia? Certainly not due to the associated costs. Each language is fine on its own, I think of Julia as being domain-specific for data analysis and number crunching. Would I write a graphical interface in Julia or a parallel I/O library or a game engine? Probably not. Would I use it for data analysis and a quick prototype for number crunching applications, certainly yes.
-
-My wishlist is:
+My wishlist of things I'd like see and do:
 
 - Have more IDE support available besides Juno
 - Have more robust libraries for I/O, machine learning
 - Have some sort of member inheritance formalized into the language (there are third-party macros available)
 - Learn more about current capabilities and future roadmap at JuliaCon 2020
+- Learn using Julia on Jupyter Notebooks
+
+Overall, I like what Julia offers for scientific computing. I'm looking forward to see Julia's evolution in the next decade. It's well designed and easy to grasp if you're coming from a numerical background (Fortran, Matlab, R). I find comparisons with Python a bit unfair, since Python is a well-established general-purpose dynamic language with a rich ecosystem for numerical capabilities that were later added into the language. It's still great that there are competing products for the kind of things I do. Would I migrate Python production code to Julia? Certainly not due to the associated costs, and Python is a fine language. I think of Julia as being domain-specific with a still rapidly growing ecosystem. Would I use it for data analysis and a quick prototype for number crunching applications? Certainly yes. 
 
 
 # [Back to main page]({{ site.url }}/)
