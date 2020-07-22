@@ -13,6 +13,7 @@ title: williamfgc's Posts
     
       <h2>
         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <time datetime="{{ post.date | date: "%Y-%m-%d" }}"><small>{{ post.date | date_to_long_string }}</small></time>
       </h2>
     
   {% endfor %}
