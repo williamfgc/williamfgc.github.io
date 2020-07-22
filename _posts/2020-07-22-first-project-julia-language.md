@@ -2,11 +2,15 @@
 layout: default
 title:  First Project using the Julia Language
 author: William F Godoy
+date: 2020-07-22
+categories: Programming Scientific-Computing
 ---
 
 #  {{ page.title }}
 
-> **_Reading time:_** 9 minutes.
+{{ page.date | date: '%B %d, %Y' }}
+
+> **_Reading time:_** 10 minutes.
 
 It's been a few times that I heard about the Julia language in the past. Labeled as a programming language for "data science" and "scientific computing". I felt intrigued and decided to use it for one of my projects at work considering that it's been nearly 2 years since [Julia reached a stable 1.0 version](https://julialang.org/blog/2018/08/one-point-zero/). I hope sharing my experience will help other people interested in the language for their applications.
 
