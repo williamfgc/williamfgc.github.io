@@ -20,7 +20,7 @@ categories: Programming Scientific-Computing
 
 I'm a long time user of Fortran, C++, C, and I have used Python, R, Matlab, and Java in the past, mostly for scientific computing projects. I'm far from being an expert in any language and I just try to keep up with project needs. These days I'm mostly using C++ and Python.
 
-This is important to point out because people with different backgrounds may have completely different opinions or I could just be dead wrong. It could also help the reader come up with its own mental mapping to some the features Julia "borrow" from other languages as I describe in the [Julia syntax and other languages](#julia-syntax-and-other-languages) section.
+This is important to point out because people with different backgrounds may have completely different opinions or I could just be dead wrong. It could also help the reader come up with its own mental mapping to some the features Julia "borrows" from other languages as I describe in the [Julia syntax and other languages](#julia-syntax-and-other-languages) section.
  
 ## How did I come across Julia?
 
@@ -230,6 +230,6 @@ This is personal wishlist of things for Julia that I'd like to see and hopefully
 - Learn about Julia's [GPU capabilities](https://github.com/JuliaGPU)
 - Learn about Julia's Machine Learning capabilities using [Flux](https://fluxml.ai/Flux.jl/stable/)
 
-Overall, I like what Julia offers for scientific computing. I'm looking forward to see Julia's evolution in the new decade. It's well designed and easy to grasp if you're coming from a numerical background (Fortran, Matlab, R). I find comparisons with Python a bit unfair. Python is a well-established general-purpose object-oriented dynamic language with a rich ecosystem for numerical capabilities that were later added into the language. It's still great that there are competing products for the kind of things I do. Would I migrate Python production code to Julia? Certainly not, there are associated costs and Python is a fine language. I think of Julia as being domain-specific with a still rapidly growing ecosystem. Would I use it for data analysis, simulations, or a quick prototype for number crunching applications? Certainly yes. Did I enjoy using Julia? Yes.
+Overall, I like what Julia offers for scientific computing. I'm looking forward to see Julia's evolution in the new decade. It's well designed and easy to grasp if you're coming from a numerical background (Fortran, Matlab, R). I find comparisons with Python a bit unfair. Python is a well-established general-purpose object-oriented dynamic language with a rich ecosystem for numerical capabilities that were later added into the language. It's still great that there are competing products for the kind of things I do. Would I migrate Python production code to Julia? Certainly not, there are associated costs and Python is a fine language. I think of Julia as being domain-specific with a still rapidly growing ecosystem. Would I use it for data analysis, simulations, or a quick prototype for number crunching applications? Certainly yes. Did I enjoy using Julia? Yes, it's a good addition to my portfolio of programming languages.
 
 # [Back to main page]({{ site.url }}/)
