@@ -12,7 +12,8 @@ I'm William F Godoy. I work as a Research Scientist at Oak Ridge National Labora
 This website is a result of my notes when trying to learn new things to fill the gap between peer-review papers and sites like GitHub, LinkedIn or ResearchGate.
 
 Interests:
-  - Scientific Software 
+  - Scientific Software
+  - Programming Languages: C++, Python, Fortran, R, Julia
   - Hardware
   - Grilling
   - Soccer

@@ -1,34 +1,27 @@
-## Welcome to GitHub Pages
+## Welcome to my Personal GitHub Pages Source
 
-You can use the [editor on GitHub](https://github.com/williamfgc/williamfgc.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Website Link: [https://williamfgc.github.io/](https://williamfgc.github.io/)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+I'm William F Godoy. I work as a Research Scientist at Oak Ridge National Laboratory scientific computing.
+This website is a result of my notes when trying to learn new things to fill the gap between peer-review papers and sites like GitHub, LinkedIn or ResearchGate.
 
-### Markdown
+Interests:
+  - Scientific Software
+  - Programming Languages: C++, Python, Fortran, R, Julia
+  - Hardware
+  - Grilling
+  - Soccer
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+On hold (until kids are ready):
+  - Fishing
+  - Camping
+   
+I can be reached on:
+- [LinkedIn](https://www.linkedin.com/in/william-f-godoy-7326a351/)
+- [ResearchGate](https://www.researchgate.net/profile/William_Godoy2)
+- [Twitter](https://twitter.com/WilliamFGodoy1)
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+Opinions expressed on this site are solely my own.
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/williamfgc/williamfgc.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
+This page is powered by [GitHub Pages](https://pages.github.com/) 
