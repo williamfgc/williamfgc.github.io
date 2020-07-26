@@ -4,6 +4,7 @@ title:  First Project using the Julia Language
 author: William F Godoy
 date: 2020-07-22
 categories: Programming Scientific-Computing
+tag: Programming
 ---
 
 #  {{ page.title }} 
