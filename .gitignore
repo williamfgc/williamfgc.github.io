@@ -1,6 +1,8 @@
+.DS_Store
 .project
 _site
 .sass-cache
 *.gem
 Gemfile.lock
 vendor/
+.bundle/
