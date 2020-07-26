@@ -8,15 +8,20 @@ title: williamfgc's Posts
 
 ## [About Me]({{ "/about.html" }})
 
-<ul class="post-list">
-  {% for post in site.posts %}
-    
+{% for tag in site.tags %}
+  <h1>{{ tag[0] }}</h1>
+  <ul>
+    {% for post in tag[1] %}
       <h2>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        <time datetime="{{ post.date | date: "%Y-%m-%d" }}"><small>{{ post.date | date_to_long_string }}</small></time>
+        <a href="{{ post.url }}">
+          {{ post.title }}
+        </a>
+        <time datetime="{{ post.date | date: "%Y-%m-%d" }}">
+          <small>{{ post.date | date_to_long_string }}</small>
+        </time>
       </h2>
-    
-  {% endfor %}
-</ul>
-
+      
+    {% endfor %}
+  </ul>
+{% endfor %}
 
